@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 function SideBar() {
-  return <Container>SideBar</Container>
+  return <Container>Stats</Container>
 }
 
 export default SideBar
