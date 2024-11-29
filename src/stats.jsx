@@ -1,10 +1,10 @@
 import styled from "styled-components"
 
-function SideBar() {
+function Stats() {
   return <Container>Stats</Container>
 }
 
-export default SideBar
+export default Stats
 
 const Container = styled.div`
   flex: 3;

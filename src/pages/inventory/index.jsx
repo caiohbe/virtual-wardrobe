@@ -1,43 +1,19 @@
 import styled from "styled-components"
-import SideBar from "../../sideBar"
+import Stats from "../../stats"
 
 function Inventory() {
   return (
     <FlexContainer>
-      <SideBar />
+      <Stats />
       <Middle>
         <Header>Header</Header>
         <Items>
-          <GridItem>
+          {/* <GridItem>
             <img
               alt='cloth'
               src='https://d1nxdo97xnvmpc.cloudfront.net/Custom/Content/Products/77/51/775155_calca-feminina-reta-enfim-1000117365-1913378_m28_638557148231699589.webp'
             />
-          </GridItem>
-          <GridItem>
-            <img
-              alt='cloth'
-              src='https://d1nxdo97xnvmpc.cloudfront.net/Custom/Content/Products/77/51/775155_calca-feminina-reta-enfim-1000117365-1913378_m28_638557148231699589.webp'
-            />
-          </GridItem>
-          <GridItem>
-            <img
-              alt='cloth'
-              src='https://d1nxdo97xnvmpc.cloudfront.net/Custom/Content/Products/77/51/775155_calca-feminina-reta-enfim-1000117365-1913378_m28_638557148231699589.webp'
-            />
-          </GridItem>
-          <GridItem>
-            <img
-              alt='cloth'
-              src='https://d1nxdo97xnvmpc.cloudfront.net/Custom/Content/Products/77/51/775155_calca-feminina-reta-enfim-1000117365-1913378_m28_638557148231699589.webp'
-            />
-          </GridItem>
-          <GridItem>
-            <img
-              alt='cloth'
-              src='https://d1nxdo97xnvmpc.cloudfront.net/Custom/Content/Products/77/51/775155_calca-feminina-reta-enfim-1000117365-1913378_m28_638557148231699589.webp'
-            />
-          </GridItem>
+          </GridItem> */}
           <GridItem>Item</GridItem>
           <GridItem>Item</GridItem>
           <GridItem>Item</GridItem>
@@ -59,22 +35,27 @@ export default Inventory
 const Middle = styled.div`
   flex: 5;
   border: solid 2px red;
+
+  display: flex;
+  flex-direction: column; //FIXME study why do I need those 2 flex lines
 `
 
-const Header = styled.div``
+const Header = styled.div`
+  height: 5svh;
+`
 
 const Items = styled.div`
+  border: 2px solid purple;
   display: grid;
+  //FIXME repeat number should be based on display width
   grid-template-columns: repeat(5, 1fr);
   overflow-y: scroll;
 `
+
 const GridItem = styled.div`
-  aspect-ratio: 9px/16px;
+  aspect-ratio: 9/16;
   border: solid 1px yellow;
 
-  img {
-    width: 100%;
-  }
   /* display: flex;
   justify-content: center;
   align-items: center; */
