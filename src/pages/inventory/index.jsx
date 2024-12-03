@@ -1,29 +1,34 @@
 import styled from "styled-components"
 import Stats from "../../stats"
 
+function generateGrid() {
+  const grid = []
+  for (let i = 0; i < 11; i++) {
+    grid.push(
+      <GridItem>
+        <img
+          src='https://kaltgear.com/cdn/shop/products/EMT_Black_Detail_1.png?v=1658173417&width=1082'
+          alt='cloth'
+        />
+      </GridItem>,
+      <GridItem>
+        <img
+          src='https://www.jardelatacadao.com.br/lojas/00050181/prod/dryfitpreta1.png'
+          alt='cloth'
+        />
+      </GridItem>
+    )
+  }
+  return grid
+}
+
 function Inventory() {
   return (
     <FlexContainer>
       <Stats />
       <Middle>
         <Header>Header</Header>
-        <Items>
-          {/* <GridItem>
-            <img
-              alt='cloth'
-              src='https://d1nxdo97xnvmpc.cloudfront.net/Custom/Content/Products/77/51/775155_calca-feminina-reta-enfim-1000117365-1913378_m28_638557148231699589.webp'
-            />
-          </GridItem> */}
-          <GridItem>Item</GridItem>
-          <GridItem>Item</GridItem>
-          <GridItem>Item</GridItem>
-          <GridItem>Item</GridItem>
-          <GridItem>Item</GridItem>
-          <GridItem>Item</GridItem>
-          <GridItem>Item</GridItem>
-          <GridItem>Item</GridItem>
-          <GridItem>Item</GridItem>
-        </Items>
+        <ItemsGrid>{generateGrid()}</ItemsGrid>
       </Middle>
       <Lime>Outfit creator</Lime>
     </FlexContainer>
@@ -37,14 +42,14 @@ const Middle = styled.div`
   border: solid 2px red;
 
   display: flex;
-  flex-direction: column; //FIXME study why do I need those 2 flex lines
+  flex-direction: column; //FIXME study why do I need those 2 flex lines for it to work properly
 `
 
 const Header = styled.div`
   height: 5svh;
 `
 
-const Items = styled.div`
+const ItemsGrid = styled.div`
   border: 2px solid purple;
   display: grid;
   //FIXME repeat number should be based on display width
@@ -55,10 +60,23 @@ const Items = styled.div`
 const GridItem = styled.div`
   aspect-ratio: 9/16;
   border: solid 1px yellow;
+  padding: 5%;
 
-  /* display: flex;
+  display: flex;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
+
+  transition: 300ms ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(115%);
+  }
+
+  img {
+    width: 100%;
+    border: solid 1px cyan;
+  }
 `
 
 const FlexContainer = styled.div`
