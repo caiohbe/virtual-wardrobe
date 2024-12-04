@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Stats from "../../stats"
+import Stats from "../stats/stats"
 
 function generateGrid() {
   const grid = []
@@ -46,14 +46,13 @@ const Middle = styled.div`
 `
 
 const Header = styled.div`
-  height: 5svh;
+  height: 7svh;
 `
 
 const ItemsGrid = styled.div`
   border: 2px solid purple;
   display: grid;
-  //FIXME repeat number should be based on display width
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
   overflow-y: scroll;
 `
 
@@ -70,12 +69,12 @@ const GridItem = styled.div`
 
   &:hover {
     cursor: pointer;
-    filter: brightness(115%);
+    filter: brightness(115%); //FIXME make this a variable to change with themes
   }
 
   img {
     width: 100%;
-    border: solid 1px cyan;
+    /* border: solid 1px cyan; */
   }
 `
 

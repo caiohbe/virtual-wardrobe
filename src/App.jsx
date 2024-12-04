@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Inventory from "./pages/inventory/"
+import Inventory from "./modules/inventory/"
 import CSSreset from "./assets/styles/globalStyles"
 
 function App() {
