@@ -52,7 +52,7 @@ const Header = styled.div`
 const ItemsGrid = styled.div`
   border: 2px solid purple;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   overflow-y: scroll;
 `
 
