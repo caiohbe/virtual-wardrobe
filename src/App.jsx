@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Inventory from "./modules/inventory/"
 import CSSreset from "./assets/styles/globalStyles"
+import Main from "./modules/main"
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <CSSreset />
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Inventory />} />
+          <Route path='/' element={<Main />} />
         </Routes>
       </BrowserRouter>
     </>
