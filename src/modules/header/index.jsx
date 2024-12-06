@@ -1,22 +1,20 @@
 import styled from "styled-components"
-import { useRef } from "react"
+import { useRef, useState } from "react"
+import handleClickOutside from "./utils/handleClickOutside"
 
 export default function Header() {
   const modalRef = useRef()
-
-  function openDialog() {
-    modalRef.current.showModal()
-  }
-
-  function closeDialog() {
-    modalRef.current.close()
-  }
+  const openDialog = () => modalRef.current.showModal()
+  const closeDialog = () => modalRef.current.close()
 
   return (
     <HeaderContainer>
       <button>Hello World</button>
       <button onClick={openDialog}>+</button>
-      <AddClothModal ref={modalRef}>
+      <AddClothModal
+        onClick={(e) => handleClickOutside(e, modalRef)}
+        ref={modalRef}
+      >
         <button onClick={closeDialog}>Cancel</button>
       </AddClothModal>
     </HeaderContainer>
@@ -24,12 +22,40 @@ export default function Header() {
 }
 
 const AddClothModal = styled.dialog`
+  @media (prefers-reduced-motion: no-preference) {
+    transition: display 250ms allow-discrete, overlay 250ms allow-discrete;
+    animation: close 250ms forwards;
+
+    &[open] {
+      animation: open 250ms forwards;
+    }
+
+    @keyframes open {
+      from {
+        opacity: 0;
+        transform: translateY(-30%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0%);
+      }
+    }
+
+    @keyframes close {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+  }
+
   border: none;
   border-radius: 2%;
   padding: 1rem;
-  height: 80%;
+  height: 90%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
   width: min(80vw, 800px);
 
   @media (width <= 450px) {
@@ -43,12 +69,11 @@ const AddClothModal = styled.dialog`
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
         0 6px 20px 0 rgba(0, 0, 0, 0.19);
       background-color: #b70821;
-      filter: brightness(95%);
       cursor: pointer;
     }
     position: absolute;
-    bottom: 3%;
-    left: 5%;
+    /* bottom: 3%;
+    left: 5%; */
     font-size: 1rem;
     color: white;
     padding: 0.1rem 1rem;
