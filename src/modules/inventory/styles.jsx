@@ -1,25 +1,26 @@
 import styled from "styled-components"
 
-export const InventoryContainer = styled.div`
-  flex: 5;
-  border: solid 2px red;
+const InventoryContainer = styled.div`
+  border: solid 2px red; //FIXME
 
+  flex: 5;
   display: flex;
   flex-direction: column; //FIXME study why do I need those 2 flex lines for it to work properly
 `
 
-export const ItemsGrid = styled.div`
-  border: 2px solid purple;
+const ItemsGrid = styled.div`
+  border: 2px solid purple; //FIXME
+
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
-  overflow-y: scroll;
+  overflow-y: auto;
 `
 
-export const GridItem = styled.div`
-  aspect-ratio: 9/16;
-  border: solid 1px yellow;
-  padding: 5%;
+const GridItem = styled.div`
+  border: solid 1px yellow; //FIXME
 
+  aspect-ratio: 9/16;
+  padding: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +33,9 @@ export const GridItem = styled.div`
   }
 
   img {
-    width: 100%;
-    border: solid 1px cyan;
+    width: ${(props) => (props.$width ? props.$width : "100%")};
+
+    border: solid 1px cyan; //FIXME
   }
 `
+export { InventoryContainer, ItemsGrid, GridItem }
