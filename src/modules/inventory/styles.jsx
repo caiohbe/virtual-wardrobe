@@ -19,7 +19,7 @@ const ItemsGrid = styled.div`
 const GridItem = styled.div`
   border: solid 1px yellow; //FIXME
 
-  aspect-ratio: 9/16;
+  /* aspect-ratio: 9/16; */
   padding: 5%;
   display: flex;
   justify-content: center;
@@ -34,6 +34,8 @@ const GridItem = styled.div`
 
   img {
     width: ${(props) => (props.$width ? props.$width : "100%")};
+    aspect-ratio: 9/16;
+    object-fit: contain;
 
     border: solid 1px cyan; //FIXME
   }
