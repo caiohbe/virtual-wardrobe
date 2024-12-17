@@ -2,7 +2,7 @@ import { GridItem } from "../modules/inventory/styles"
 
 export default function generateGrid() {
   const grid = []
-  for (let i = 0; i < 11; i++) {
+  for (let i = 0; i < 80; i++) {
     grid.push(
       <GridItem key={i}>
         <img

@@ -34,7 +34,7 @@ const GridItem = styled.div`
 
   img {
     width: ${(props) => (props.$width ? props.$width : "100%")};
-    aspect-ratio: 9/16;
+    aspect-ratio: 2/3;
     object-fit: contain;
 
     border: solid 1px cyan; //FIXME

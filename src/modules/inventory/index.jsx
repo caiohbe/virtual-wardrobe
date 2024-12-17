@@ -4,7 +4,7 @@ import { GridItem, InventoryContainer, ItemsGrid } from "./styles"
 import { useRef } from "react"
 import addIcon from "../../assets/images/addIcon.svg"
 import AlertButton from "../../assets/styles/alertButton"
-import AddClothModal from "./addClothModa"
+import AddClothModal from "./addClothModal"
 
 export default function Inventory() {
   const modalRef = useRef()

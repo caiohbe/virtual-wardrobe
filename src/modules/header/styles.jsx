@@ -1,5 +1,5 @@
 import styled from "styled-components"
-
+//FIXME this shouldn't be under header folder
 const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
@@ -10,17 +10,17 @@ const HeaderContainer = styled.div`
 `
 const StyledDialog = styled.dialog`
   @media (prefers-reduced-motion: no-preference) {
-    transition: display 250ms allow-discrete, overlay 250ms allow-discrete;
-    animation: close 250ms forwards;
+    transition: display 200ms allow-discrete, overlay 200ms allow-discrete;
+    animation: close 200ms forwards;
 
     &[open] {
-      animation: open 250ms forwards;
+      animation: open 200ms forwards;
     }
 
     @keyframes open {
       from {
         opacity: 0;
-        transform: translateY(-100%);
+        transform: translateY(-5%);
       }
       to {
         opacity: 1;
@@ -36,7 +36,7 @@ const StyledDialog = styled.dialog`
       to {
         opacity: 0;
 
-        transform: translateX(100%);
+        transform: translateY(-5%);
       }
     }
   }

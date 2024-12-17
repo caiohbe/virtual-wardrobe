@@ -14,5 +14,7 @@ export const StyledButton = styled.button`
   border-radius: 12rem;
   line-height: 1.5em;
   user-select: none;
+  height: 2rem;
+  min-width: 3rem;
 `
 export default StyledButton
