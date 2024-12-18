@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import StyledButton from "../../assets/styles/styledButton"
 
 const InventoryContainer = styled.div`
   border: solid 2px red; //FIXME
@@ -19,7 +20,6 @@ const ItemsGrid = styled.div`
 const GridItem = styled.div`
   border: solid 1px yellow; //FIXME
 
-  /* aspect-ratio: 9/16; */
   padding: 5%;
   display: flex;
   justify-content: center;
@@ -40,4 +40,94 @@ const GridItem = styled.div`
     border: solid 1px cyan; //FIXME
   }
 `
-export { InventoryContainer, ItemsGrid, GridItem }
+
+const OptionsButton = styled(StyledButton)`
+  background-color: ${(props) => (props.$selected ? "black" : "white")};
+  color: ${(props) => (props.$selected ? "white" : "black")};
+  border: 1px solid black; //FIXME
+  height: auto;
+  margin: 0.1rem 0.2rem;
+`
+
+const OptionsContainer = styled.div`
+  border: 2 px solid lime; //FIXME
+  display: ${(props) => (props.$display ? "block" : "none")};
+`
+
+const ToggleContainer = styled.div`
+  width: 80%;
+  margin: 0.6rem 0;
+
+  @media (width <= 450px) {
+    width: 100%;
+  }
+`
+
+const SelectorIndicator = styled.div`
+  border: solid 2px orange; //FIXME
+
+  background-color: ${(props) => (props.$display ? "black" : "white")};
+  color: ${(props) => (props.$display ? "white" : "black")};
+
+  user-select: none;
+  transition: 200ms ease-in-out;
+
+  white-space: nowrap;
+  span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0 0.7rem;
+    line-height: 2rem;
+  }
+
+  p {
+    margin: 0 0.7rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(95%);
+  }
+
+  padding: 0.2rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 2rem;
+`
+
+const StyledForm = styled.form`
+  > button:nth-child(1) {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  > button:nth-child(2) {
+    position: absolute;
+    top: 1rem;
+    right: 4.5rem;
+  }
+
+  input {
+    margin: 0.5rem 0;
+  }
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+`
+
+export {
+  InventoryContainer,
+  ItemsGrid,
+  GridItem,
+  OptionsButton,
+  OptionsContainer,
+  ToggleContainer,
+  SelectorIndicator,
+  StyledForm,
+}
