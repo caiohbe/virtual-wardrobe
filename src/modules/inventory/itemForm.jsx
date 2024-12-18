@@ -3,21 +3,24 @@ import { useRef } from "react"
 import StyledButton from "../../assets/styles/styledButton"
 import { StyledForm } from "./styles"
 import ToggleOption from "./toggleOption"
-import colors from "./constants/colors"
+import image from "../../assets/images/cotton.jpg"
 
 export default function ItemForm({ closeDialog }) {
   const nameRef = useRef()
   const imageRef = useRef()
-  const seasonRef = useRef()
 
   function submit(event) {
     event.preventDefault()
 
     console.log({
       image: imageRef.current.value,
-
       name: nameRef.current.value,
-      season: seasonRef.current.value,
+    })
+  }
+
+  function generateToggleableOptions(data) {
+    return data.map((option) => {
+      return <ToggleOption name={option.name} options={option.options} />
     })
   }
 
@@ -30,6 +33,7 @@ export default function ItemForm({ closeDialog }) {
         <StyledButton onClick={closeDialog} type='button'>
           -
         </StyledButton>
+
         <label htmlFor='imageInput'>Image URL: </label>
         <input ref={imageRef} id='imageInput' type='text' />
 
@@ -41,7 +45,20 @@ export default function ItemForm({ closeDialog }) {
           options={["Spring", "Summer", "Fall", "Winter"]}
         />
 
-        <ToggleOption name='Color' options={colors} />
+        <ToggleOption name='Color' options={["Red", "Blue", "Green"]} />
+
+        <ToggleOption
+          name='Colors'
+          options={[
+            { name: "Red", icon: "#FF0000" },
+            { name: "Blue", icon: "#0000FF" },
+            { name: "Green", icon: "#00FF00" },
+            { name: "Yellow", icon: "#FFFF00" },
+            { name: "Orange", icon: "#FFA500" },
+            { name: "Purple", icon: "#800080" },
+            { name: "Multi Color", icon: image },
+          ]}
+        />
 
         <button type='submit'>Submit</button>
       </StyledForm>

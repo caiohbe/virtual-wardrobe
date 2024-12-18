@@ -1,12 +1,7 @@
 import { useState } from "react"
-import {
-  ToggleContainer,
-  SelectorIndicator,
-  OptionsContainer,
-  OptionsButton,
-} from "./styles"
-import handleSelection from "./utils/handleSelection"
+import { ToggleContainer, SelectorIndicator, OptionsContainer } from "./styles"
 import formatSelected from "./utils/formatSelected"
+import generateOptions from "./utils/generateOptions"
 
 export default function ToggleOption({ ...props }) {
   const [display, setDisplay] = useState(false)
@@ -23,18 +18,7 @@ export default function ToggleOption({ ...props }) {
         <span>{formatSelected(selected, props.options)}</span>
       </SelectorIndicator>
       <OptionsContainer $display={display}>
-        {props.options.map((option, index) => {
-          return (
-            <OptionsButton
-              $selected={selected.includes(option)}
-              onClick={() => handleSelection(option, selected, setSelected)}
-              type='button'
-              key={index}
-            >
-              {option}
-            </OptionsButton>
-          )
-        })}
+        {generateOptions(props.options, selected, setSelected)}
       </OptionsContainer>
     </ToggleContainer>
   )

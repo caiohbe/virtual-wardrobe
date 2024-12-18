@@ -47,11 +47,14 @@ const OptionsButton = styled(StyledButton)`
   border: 1px solid black; //FIXME
   height: auto;
   margin: 0.1rem 0.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const OptionsContainer = styled.div`
-  border: 2 px solid lime; //FIXME
-  display: ${(props) => (props.$display ? "block" : "none")};
+  display: ${(props) => (props.$display ? "flex" : "none")};
 `
 
 const ToggleContainer = styled.div`
