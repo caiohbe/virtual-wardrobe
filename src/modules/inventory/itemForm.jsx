@@ -45,8 +45,6 @@ export default function ItemForm({ closeDialog }) {
           options={["Spring", "Summer", "Fall", "Winter"]}
         />
 
-        <ToggleOption name='Color' options={["Red", "Blue", "Green"]} />
-
         <ToggleOption
           name='Colors'
           options={[
@@ -56,7 +54,43 @@ export default function ItemForm({ closeDialog }) {
             { name: "Yellow", icon: "#FFFF00" },
             { name: "Orange", icon: "#FFA500" },
             { name: "Purple", icon: "#800080" },
-            { name: "Multi Color", icon: image },
+            { name: "Black", icon: "#000000" },
+            { name: "Cotton", icon: image },
+          ]}
+        />
+
+        <ToggleOption
+          name='Category'
+          options={[
+            {
+              name: "Upperwear",
+              variants: ["Shirt", "T-Shirt", "Sweater", "Jacket", "Coat"],
+            },
+            {
+              name: "Bottomwear",
+              variants: ["Jeans", "Leggings", "Shorts", "Skirt", "Trousers"],
+            },
+            {
+              name: "Footwear",
+              variants: ["Boots", "Sandals", "Sneakers", "Slippers", "Socks"],
+            },
+          ]}
+        />
+        <ToggleOption
+          name='Category'
+          options={[
+            {
+              name: "Upperwear",
+              variants: ["Shirt", "T-Shirt", "Sweater", "Jacket", "Coat"],
+            },
+            {
+              name: "Bottomwear",
+              variants: ["Jeans", "Leggings", "Shorts", "Skirt", "Trousers"],
+            },
+            {
+              name: "Footwear",
+              variants: ["Boots", "Sandals", "Sneakers", "Slippers", "Socks"],
+            },
           ]}
         />
 

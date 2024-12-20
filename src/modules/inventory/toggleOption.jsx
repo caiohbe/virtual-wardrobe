@@ -6,6 +6,7 @@ import generateOptions from "./utils/generateOptions"
 export default function ToggleOption({ ...props }) {
   const [display, setDisplay] = useState(false)
   const [selected, setSelected] = useState([])
+  const [selectedVariant, setSelectedVariant] = useState(null)
 
   return (
     <ToggleContainer>
@@ -15,10 +16,16 @@ export default function ToggleOption({ ...props }) {
         onClick={() => setDisplay(!display)}
       >
         <p>{props.name}</p>
-        <span>{formatSelected(selected, props.options)}</span>
+        <span>{formatSelected(selected, props.options, selectedVariant)}</span>
       </SelectorIndicator>
       <OptionsContainer $display={display}>
-        {generateOptions(props.options, selected, setSelected)}
+        {generateOptions(
+          props.options,
+          selected,
+          setSelected,
+          selectedVariant,
+          setSelectedVariant
+        )}
       </OptionsContainer>
     </ToggleContainer>
   )

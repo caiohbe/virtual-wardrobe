@@ -16,14 +16,32 @@ export default toggleOptions = [
   },
 ]
 ;[
-  { name: "Red", hexCode: "#FF0000" },
-  { name: "Blue", hexCode: "#0000FF" },
-  { name: "Green", hexCode: "#00FF00" },
-  { name: "Yellow", hexCode: "#FFFF00" },
-  { name: "Orange", hexCode: "#FFA500" },
-  { name: "Purple", hexCode: "#800080" },
+  { name: "Red", icon: "#FF0000" },
+  { name: "Blue", icon: "#0000FF" },
+  { name: "Green", icon: "#00FF00" },
+  { name: "Yellow", icon: "#FFFF00" },
+  { name: "Orange", icon: "#FFA500" },
+  { name: "Purple", icon: "#800080" },
   { name: "Multi Color", icon: image },
 ]
+;[
+  {
+    category: "Tops",
+    options: ["Shirt", "T-Shirt", "Sweater", "Jacket", "Coat"],
+  },
+  {
+    category: "Bottoms",
+    options: ["Pants", "Jeans", "Skirt", "Shorts"],
+  },
+  {
+    Season: ["Spring", "Summer", "Fall", "Winter"],
+  },
+]
+
+const categoryMap = {
+  Tops: ["Shirt", "T-Shirt", "Sweater", "Jacket", "Coat"],
+  Bottoms: ["Pants", "Jeans", "Skirt", "Shorts"],
+}
 
 const colorMap = {
   Red: "#FF0000",
@@ -53,5 +71,12 @@ function formatOptions(optionMap) {
   return Object.keys(optionMap).map((option) => ({
     name: option,
     icon: optionMap[option],
+  }))
+}
+
+function formatCategories(categoryMap) {
+  return Object.keys(categoryMap).map((category) => ({
+    name: category,
+    variants: categoryMap[category],
   }))
 }

@@ -6,7 +6,7 @@ const InventoryContainer = styled.div`
 
   flex: 5;
   display: flex;
-  flex-direction: column; //FIXME study why do I need those 2 flex lines for it to work properly
+  flex-direction: column;
 `
 
 const ItemsGrid = styled.div`
@@ -45,16 +45,18 @@ const OptionsButton = styled(StyledButton)`
   background-color: ${(props) => (props.$selected ? "black" : "white")};
   color: ${(props) => (props.$selected ? "white" : "black")};
   border: 1px solid black; //FIXME
-  height: auto;
   margin: 0.1rem 0.2rem;
 
-  display: flex;
+  display: ${(props) => (props.$hide ? "none" : "flex")};
+
   align-items: center;
   justify-content: center;
 `
 
 const OptionsContainer = styled.div`
   display: ${(props) => (props.$display ? "flex" : "none")};
+  flex-wrap: wrap;
+  margin-top: 0.3rem;
 `
 
 const ToggleContainer = styled.div`
@@ -67,10 +69,14 @@ const ToggleContainer = styled.div`
 `
 
 const SelectorIndicator = styled.div`
+  filter: ${(props) => (props.$display ? "brightness(95%)" : "none")};
   border: solid 2px orange; //FIXME
 
-  background-color: ${(props) => (props.$display ? "black" : "white")};
-  color: ${(props) => (props.$display ? "white" : "black")};
+  /* background-color: ${(props) => (props.$display ? "black" : "white")};
+  color: ${(props) => (props.$display ? "white" : "black")}; */
+
+  background-color: white;
+  color: black;
 
   user-select: none;
   transition: 200ms ease-in-out;
@@ -85,11 +91,12 @@ const SelectorIndicator = styled.div`
 
   p {
     margin: 0 0.7rem;
+    font-weight: 500;
   }
 
   &:hover {
     cursor: pointer;
-    filter: brightness(95%);
+    filter: brightness(97%);
   }
 
   padding: 0.2rem;
@@ -113,6 +120,8 @@ const StyledForm = styled.form`
     right: 4.5rem;
   }
 
+  margin-top: 4rem;
+
   input {
     margin: 0.5rem 0;
   }
@@ -124,6 +133,20 @@ const StyledForm = styled.form`
   justify-content: center;
 `
 
+const IconDiv = styled.span`
+  height: 70%;
+  aspect-ratio: 1/1;
+  background-color: ${(props) => props.$color};
+  border-radius: 0.2rem;
+  margin-right: 0.2rem;
+`
+const IconImg = styled.img`
+  height: 85%;
+  aspect-ratio: 1/1;
+  border-radius: 0.2rem;
+  margin-right: 0.2rem;
+`
+
 export {
   InventoryContainer,
   ItemsGrid,
@@ -133,4 +156,6 @@ export {
   ToggleContainer,
   SelectorIndicator,
   StyledForm,
+  IconDiv,
+  IconImg,
 }

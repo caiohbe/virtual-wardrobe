@@ -1,4 +1,4 @@
-export default function formatSelected(list, options) {
+export default function formatSelected(list, options, selectedVariant) {
   const desiredOrder = []
 
   if (!options[0].name) {
@@ -11,6 +11,10 @@ export default function formatSelected(list, options) {
 
   const orderMap = new Map(desiredOrder.map((item, index) => [item, index]))
   list.sort((a, b) => orderMap.get(a) - orderMap.get(b))
+
+  if (selectedVariant) {
+    list = [...list, selectedVariant]
+  }
 
   let sortedList = ""
 
