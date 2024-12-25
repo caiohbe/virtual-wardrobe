@@ -1,6 +1,8 @@
 import renderIcon from "./renderIcon"
+import renderVariants from "./renderVariants"
 import handleSelection from "../hooks/handleSelection"
 import { OptionsButton } from "../styles"
+import styled from "styled-components"
 
 export default function generateOptions(
   optionsList,
@@ -18,55 +20,28 @@ export default function generateOptions(
       selected[0]
     const handleOptionClick = () =>
       handleSelection(option, selected, setSelected, setSelectedVariant)
-
     return (
-      <>
+      <FlexDiv key={option.name ?? option}>
         <OptionsButton
           $hide={hideElement}
           $selected={isSelected}
           onClick={handleOptionClick}
           type='button'
-          key={index}
         >
           {renderIcon(option.icon)}
           <div>{option.name ?? option}</div>
         </OptionsButton>
-
         {renderVariants(
           option.variants,
           isSelected,
           selectedVariant,
           setSelectedVariant
         )}
-      </>
+      </FlexDiv>
     )
   })
 }
 
-function renderVariants(
-  variants,
-  isSelected,
-  selectedVariant,
-  setSelectedVariant
-) {
-  if (!isSelected || !variants) return
-
-  return variants.map((variant, index) => {
-    const isVariantSelected = selectedVariant === variant
-    function handleVariantClick() {
-      if (isVariantSelected) setSelectedVariant(null)
-      else setSelectedVariant(variant)
-    }
-    return (
-      <OptionsButton
-        $selected={isVariantSelected}
-        onClick={() => handleVariantClick()}
-        type='button'
-        key={index}
-      >
-        {renderIcon(variant.icon)}
-        <div>{variant}</div>
-      </OptionsButton>
-    )
-  })
-}
+const FlexDiv = styled.div`
+  display: flex;
+`

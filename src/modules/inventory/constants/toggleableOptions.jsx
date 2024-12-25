@@ -1,6 +1,35 @@
 import cottonImage from "../../../assets/images/cotton.jpg"
+import solidImage from "../../../assets/images/solidColor.jpg"
+import tieDyeImage from "../../../assets/images/tieDye.jpg"
 
-export default toggleOptions = [
+const categoryMap = {
+  Tops: ["Shirt", "T-Shirt", "Sweater", "Jacket", "Coat"],
+  Bottoms: ["Pants", "Jeans", "Skirt", "Shorts"],
+}
+const categoryOptions = formatCategories(categoryMap)
+
+const colorMap = {
+  Red: "#FF0000",
+  Blue: "#0000FF",
+  Green: "#00FF00",
+  Yellow: "#FFFF00",
+  Orange: "#FFA500",
+  Purple: "#800080",
+}
+const colorOptions = formatOptions(colorMap)
+
+const fabricMap = {
+  Cotton: cottonImage,
+}
+const fabricOptions = formatOptions(fabricMap)
+
+const patternMap = {
+  Solid: solidImage,
+  "Tie Dye": tieDyeImage,
+}
+const patternOptions = formatOptions(patternMap)
+
+const toggleData = [
   { label: "Season", options: ["Spring", "Summer", "Fall", "Winter"] },
   {
     label: "Color",
@@ -14,58 +43,13 @@ export default toggleOptions = [
     label: "Pattern",
     options: patternOptions,
   },
-]
-;[
-  { name: "Red", icon: "#FF0000" },
-  { name: "Blue", icon: "#0000FF" },
-  { name: "Green", icon: "#00FF00" },
-  { name: "Yellow", icon: "#FFFF00" },
-  { name: "Orange", icon: "#FFA500" },
-  { name: "Purple", icon: "#800080" },
-  { name: "Multi Color", icon: image },
-]
-;[
   {
-    category: "Tops",
-    options: ["Shirt", "T-Shirt", "Sweater", "Jacket", "Coat"],
-  },
-  {
-    category: "Bottoms",
-    options: ["Pants", "Jeans", "Skirt", "Shorts"],
-  },
-  {
-    Season: ["Spring", "Summer", "Fall", "Winter"],
+    label: "Category",
+    options: categoryOptions,
   },
 ]
 
-const categoryMap = {
-  Tops: ["Shirt", "T-Shirt", "Sweater", "Jacket", "Coat"],
-  Bottoms: ["Pants", "Jeans", "Skirt", "Shorts"],
-}
-
-const colorMap = {
-  Red: "#FF0000",
-  Blue: "#0000FF",
-  Green: "#00FF00",
-  Yellow: "#FFFF00",
-  Orange: "#FFA500",
-  Purple: "#800080",
-}
-
-const colorOptions = formatOptions(colorMap)
-
-const fabricMap = {
-  Cotton: cottonImage,
-}
-
-const fabricOptions = formatOptions(fabricMap)
-
-const patternMap = {
-  Solid: solidImage,
-  "Tye Die": tyeDieImage,
-}
-
-const patternOptions = formatOptions(patternMap)
+export default toggleData
 
 function formatOptions(optionMap) {
   return Object.keys(optionMap).map((option) => ({
