@@ -1,12 +1,14 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { ToggleContainer, SelectorIndicator, OptionsContainer } from "./styles"
 import formatSelected from "./utils/formatSelected"
 import generateOptions from "./utils/generateOptions"
+import CreateItemContext from "./contexts/createItemContext"
 
 export default function ToggleOption({ ...props }) {
   const [display, setDisplay] = useState(false)
   const [selected, setSelected] = useState([])
-  const [selectedVariant, setSelectedVariant] = useState(null)
+  const [selectedVariant, setSelectedVariant] = useState(undefined)
+  const { formItemProps, setFormItemProps } = useContext(CreateItemContext)
 
   return (
     <ToggleContainer>
@@ -15,7 +17,7 @@ export default function ToggleOption({ ...props }) {
         type='button'
         onClick={() => setDisplay(!display)}
       >
-        <p>{props.name}</p>
+        <p>{props.label}</p>
         <span>{formatSelected(selected, props.options, selectedVariant)}</span>
       </SelectorIndicator>
       <OptionsContainer $display={display}>
@@ -24,7 +26,10 @@ export default function ToggleOption({ ...props }) {
           selected,
           setSelected,
           selectedVariant,
-          setSelectedVariant
+          setSelectedVariant,
+          props.label,
+          formItemProps,
+          setFormItemProps
         )}
       </OptionsContainer>
     </ToggleContainer>

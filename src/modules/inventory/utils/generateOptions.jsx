@@ -9,9 +9,12 @@ export default function generateOptions(
   selected,
   setSelected,
   selectedVariant,
-  setSelectedVariant
+  setSelectedVariant,
+  label,
+  formItem,
+  setFormItem
 ) {
-  return optionsList.map((option, index) => {
+  return optionsList.map((option) => {
     const isSelected = selected.includes(option.name ?? option)
     const hideElement =
       option.variants &&
@@ -19,7 +22,15 @@ export default function generateOptions(
       !isSelected &&
       selected[0]
     const handleOptionClick = () =>
-      handleSelection(option, selected, setSelected, setSelectedVariant)
+      handleSelection(
+        option,
+        selected,
+        setSelected,
+        setSelectedVariant,
+        label,
+        formItem,
+        setFormItem
+      )
     return (
       <FlexDiv key={option.name ?? option}>
         <OptionsButton
@@ -35,7 +46,10 @@ export default function generateOptions(
           option.variants,
           isSelected,
           selectedVariant,
-          setSelectedVariant
+          setSelectedVariant,
+          formItem,
+          setFormItem,
+          label
         )}
       </FlexDiv>
     )
