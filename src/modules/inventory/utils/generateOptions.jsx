@@ -31,6 +31,17 @@ export default function generateOptions(
         formItem,
         setFormItem
       )
+    const handleVariantRender = () =>
+      renderVariants(
+        option.variants,
+        isSelected,
+        selectedVariant,
+        setSelectedVariant,
+        formItem,
+        setFormItem,
+        label
+      )
+
     return (
       <FlexDiv key={option.name ?? option}>
         <OptionsButton
@@ -42,15 +53,7 @@ export default function generateOptions(
           {renderIcon(option.icon)}
           <div>{option.name ?? option}</div>
         </OptionsButton>
-        {renderVariants(
-          option.variants,
-          isSelected,
-          selectedVariant,
-          setSelectedVariant,
-          formItem,
-          setFormItem,
-          label
-        )}
+        {handleVariantRender()}
       </FlexDiv>
     )
   })

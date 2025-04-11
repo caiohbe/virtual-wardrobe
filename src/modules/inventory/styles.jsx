@@ -29,7 +29,7 @@ const GridItem = styled.div`
 
   &:hover {
     cursor: pointer;
-    filter: brightness(115%); //FIXME make this a variable to change with themes
+    filter: brightness(108%); //FIXME make this a variable to change with themes
   }
 
   img {

@@ -1,26 +1,39 @@
 import AlertButton from "../../assets/styles/alertButton"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import StyledButton from "../../assets/styles/styledButton"
 import { StyledForm } from "./styles"
 import generateToggleableOptions from "./utils/generateToggleableOptions"
 import toggleData from "./constants/toggleableOptions"
-
 import { useContext } from "react"
 import CreateItemContext from "./contexts/createItemContext"
 
-export default function ItemForm({ closeDialog }) {
+export default function ItemForm({ closeDialog, items, setItems }) {
   const nameRef = useRef()
   const imageRef = useRef()
 
-  const { formItemProps } = useContext(CreateItemContext)
+  const { formItemProps, setFormItemProps } = useContext(CreateItemContext)
 
   function submit(event) {
     event.preventDefault()
 
-    console.log({
+    const newItem = {
       image: imageRef.current.value,
       name: nameRef.current.value,
-    })
+      props: formItemProps,
+    }
+
+    setFormItemProps((prev) => ({
+      ...prev,
+      newItem,
+    }))
+
+    setItems((prev) => [...prev, newItem])
+    console.log(items)
+
+    closeDialog()
+
+    imageRef.current.value = ""
+    nameRef.current.value = ""
   }
 
   return (
